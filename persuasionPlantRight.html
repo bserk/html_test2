@@ -34,6 +34,12 @@
         column-width: 20px;
       }
 
+      .splt{
+        background-color: #cecece;
+        text-align: center;
+        column-width: 5px;
+      }
+
       .set1{
         text-align: center;
         column-width: 20px;
@@ -45,6 +51,8 @@
       }
 
       .set5{
+        background-color: #007bff;
+        color: white;
         text-align: center;
         /*column-width: 100px;*/
       }
@@ -165,7 +173,7 @@
   ];
 
   const jsonMedCraft=[
-  {"a":"","b":"","c":"","d":"","e":"","f":"Organic","g":"","h":"","i":"","j":"","k":"","l":"","m":"","n":"","o":"Inorganic","p":"","q":"","r":"","s":"","t":"","u":"","v":"","w":"","spn":"9"},
+  {"a":"","b":"","c":"","d":"","e":"","f":"Organic (5)","g":"","h":"","i":"","j":"","k":"","l":"","m":"","n":"","o":"Inorganic (10)","p":"","q":"","r":"","s":"","t":"","u":"","v":"","w":"","spn":"9"},
   {"a":"","b":"","c":"","d":"","e":"","f":"High","g":"","h":"","i":"Medium","j":"","k":"","l":"Low","m":"","n":"","o":"High","p":"","q":"","r":"Medium","s":"","t":"","u":"Low","v":"","w":"","spn":"3"},
   {"a":"","b":"","c":"","d":"","e":"","f":"Sadia","g":"","h":"","i":"Kasopo","j":"","k":"","l":"Havero","m":"","n":"","o":"Micokiide","p":"","q":"","r":"Toiggi","s":"","t":"","u":"Sabaeite","v":"","w":"","spn":"3"},
   {"a":"Internal Bleeding","b":"","c":"","d":"","e":"","f":"","g":"","h":"","i":"","j":"","k":"","l":"","m":"","n":"","o":"","p":"","q":"","r":"","s":"","t":"","u":"","v":"","w":"","spn":"3"},
@@ -225,7 +233,6 @@
     
     const bCell=document.createElement('td');
     bCell.textContent=med.b;
-    bCell.className = 'grid';
     
     const cCell=document.createElement('td');
     cCell.textContent=med.c;
@@ -294,26 +301,26 @@
     row.appendChild(aCell);
 
     if (spnCell.textContent === "5"){
-      bCell.className = 'set1';
+      bCell.className = 'splt';
       row.appendChild(bCell);
       cCell.colSpan = 5;
       cCell.className = 'set5';
       row.appendChild(cCell);
-      row.appendChild(gCell);
-      hCell.className = 'set1';
+      hCell.className = 'splt';
+      row.appendChild(hCell);
       iCell.colSpan = 5;
       iCell.className = 'set5';
       row.appendChild(iCell);
-      nCell.className = 'set1';
+      nCell.className = 'splt';
       row.appendChild(nCell);
       oCell.colSpan = 5;
       oCell.className = 'set5';
       row.appendChild(oCell);
-      tCell.className = 'set1';
+      tCell.className = 'splt';
       row.appendChild(tCell);
     }else if(spnCell.textContent === "1"){
 
-      bCell.className = 'set1';
+      bCell.className = 'splt';
       row.appendChild(bCell);
 
         cCell.className = 'set1';
@@ -327,7 +334,7 @@
         gCell.className = 'set1';
         row.appendChild(gCell);
 
-      hCell.className = 'set1';
+      hCell.className = 'splt';
       row.appendChild(hCell);
 
         iCell.className = 'set1';
@@ -341,7 +348,7 @@
         mCell.className = 'set1';
         row.appendChild(mCell);
 
-      nCell.className = 'set1';
+      nCell.className = 'splt';
       row.appendChild(nCell);
 
         oCell.className = 'set1';
@@ -355,7 +362,7 @@
         sCell.className = 'set1';
         row.appendChild(sCell);
 
-      tCell.className = 'set1';
+      tCell.className = 'splt';
       row.appendChild(tCell);
     };
     
@@ -443,27 +450,20 @@
               dCell.className = 'grid';
 
               const eCell=document.createElement('td');
-              if(aCell.textContent === "Internal Bleeding"){
-                eCell.textContent=30 - intBleedingAll;
-              }else if(aCell.textContent === "Swelling"){
-                eCell.textContent=30 - swellingAll;
-              }else if(aCell.textContent === "Bloody Cough"){
-                eCell.textContent=30 - bldCoughAll;
-              }else if(aCell.textContent === "Violent Spasms"){
-                eCell.textContent=30 - vlntSpasmAll;
-              }else if(aCell.textContent === "Paralysis Lost Vision"){
-                eCell.textContent=30 - paralVisAll;
-              }else if(aCell.textContent === "Erratic Heart Resp Failure"){
-                eCell.textContent=30 - hrtRespAll;
-              }else if(aCell.textContent === "Lesions Open Sores"){
-                eCell.textContent=30 - lesSoreAll;
-              }else if(aCell.textContent === "Vomit Fever"){
-                eCell.textContent=30 - vmtFvrAll;
+              if(aCell.textContent === "Internal Bleeding")                 {eCell.textContent=30 - intBleedingAll
+              }else if(aCell.textContent === "Swelling")                    {eCell.textContent=30 - swellingAll
+              }else if(aCell.textContent === "Bloody Cough")                {eCell.textContent=30 - bldCoughAll
+              }else if(aCell.textContent === "Violent Spasms")              {eCell.textContent=30 - vlntSpasmAll
+              }else if(aCell.textContent === "Paralysis Lost Vision")       {eCell.textContent=30 - paralVisAll
+              }else if(aCell.textContent === "Erratic Heart Resp Failure")  {eCell.textContent=30 - hrtRespAll
+              }else if(aCell.textContent === "Lesions Open Sores")          {eCell.textContent=30 - lesSoreAll
+              }else if(aCell.textContent === "Vomit Fever")                 {eCell.textContent=30 - vmtFvrAll
               };
               eCell.className = 'grid';
               
               const fCell=document.createElement('td');
-              fCell.textContent=med.f;
+              if(aCell.textContent === "Internal Bleeding")                 {fCell.textContent=(30 - intBleedingAll)*5
+              }else {fCell.textContent=med.f};
               
               const gCell=document.createElement('td');
               gCell.textContent=med.g;
@@ -472,7 +472,11 @@
               hCell.textContent=med.h;
               
               const iCell=document.createElement('td');
-              iCell.textContent=med.i;
+              if(aCell.textContent === "Swelling")                          {iCell.textContent=(30 - swellingAll)*5
+              }else if(aCell.textContent === "Bloody Cough")                {iCell.textContent=(30 - bldCoughAll)*5
+              }else if(aCell.textContent === "Violent Spasms")              {iCell.textContent=(30 - vlntSpasmAll)*5
+              }else if(aCell.textContent === "Paralysis Lost Vision")       {iCell.textContent=(30 - paralVisAll)*5
+              }else {iCell.textContent=med.i};
               
               const jCell=document.createElement('td');
               jCell.textContent=med.j;
@@ -481,7 +485,10 @@
               kCell.textContent=med.k;
               
               const lCell=document.createElement('td');
-              lCell.textContent=med.l;
+              if(aCell.textContent === "Erratic Heart Resp Failure")        {lCell.textContent=(30 - hrtRespAll)*5
+              }else if(aCell.textContent === "Lesions Open Sores")          {lCell.textContent=(30 - lesSoreAll)*5
+              }else if(aCell.textContent === "Vomit Fever")                 {lCell.textContent=(30 - vmtFvrAll)*5
+              }else {lCell.textContent=med.l};
               
               const mCell=document.createElement('td');
               mCell.textContent=med.m;
@@ -490,7 +497,13 @@
               nCell.textContent=med.n;
               
               const oCell=document.createElement('td');
-              oCell.textContent=med.o;
+              if(aCell.textContent === "Internal Bleeding")                 {oCell.textContent=(30 - intBleedingAll)*10
+              }else if(aCell.textContent === "Swelling")                    {oCell.textContent=(30 - swellingAll)*10
+              }else if(aCell.textContent === "Bloody Cough")                {oCell.textContent=(30 - bldCoughAll)*10
+              }else if(aCell.textContent === "Violent Spasms")              {oCell.textContent=(30 - vlntSpasmAll)*10
+              }else if(aCell.textContent === "Paralysis Lost Vision")       {oCell.textContent=(30 - paralVisAll)*10
+              }else if(aCell.textContent === "Erratic Heart Resp Failure")  {oCell.textContent=(30 - hrtRespAll)*10
+              }else {oCell.textContent=med.o};
               
               const pCell=document.createElement('td');
               pCell.textContent=med.p;
@@ -499,7 +512,9 @@
               qCell.textContent=med.q;
               
               const rCell=document.createElement('td');
-              rCell.textContent=med.r;
+              if(aCell.textContent === "Lesions Open Sores")          {rCell.textContent=(30 - lesSoreAll)*10
+              }else if(aCell.textContent === "Vomit Fever")                 {rCell.textContent=(30 - vmtFvrAll)*10
+              }else {rCell.textContent=med.r};
               
               const sCell=document.createElement('td');
               sCell.textContent=med.s;
@@ -508,7 +523,8 @@
               tCell.textContent=med.t;
               
               const uCell=document.createElement('td');
-              uCell.textContent=med.u;
+              if(aCell.textContent === "Vomit Fever")                 {uCell.textContent=(30 - vmtFvrAll)*10
+              }else {uCell.textContent=med.u};
               
               const vCell=document.createElement('td');
               vCell.textContent=med.v;
