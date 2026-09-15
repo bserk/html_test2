@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>My GitHub Webpage</title>
+    <title>Horizontal Frames Example</title>
 </head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my brand new website hosted on GitHub Pages!</p>
-</body>
+
+<!-- Use <frameset> instead of <body> -->
+<frameset rows="60px, *">
+    <frame src="pages/nav.html" name="top">
+    <frame src="pages/swgResources.html" name="bottom">
+    
+    <!-- Fallback for old browsers that don't support frames -->
+    <noframes>
+        <body>
+            <p>Your browser does not support frames.</p>
+        </body>
+    </noframes>
+</frameset>
+
 </html>
